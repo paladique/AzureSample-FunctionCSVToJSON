@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSVConverter", "CSVConverter\CSVConverter.csproj", "{ABF1E08D-11B2-4867-B9E9-9DD5A4811999}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABF1E08D-11B2-4867-B9E9-9DD5A4811999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABF1E08D-11B2-4867-B9E9-9DD5A4811999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABF1E08D-11B2-4867-B9E9-9DD5A4811999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABF1E08D-11B2-4867-B9E9-9DD5A4811999}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F269E2AE-C1DB-4178-9246-450082696609}
+	EndGlobalSection
+EndGlobal
