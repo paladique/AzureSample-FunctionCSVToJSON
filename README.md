@@ -42,6 +42,8 @@ Function apps host the execution of Functions. We'll use the project that was cr
 
 1. In Solution Explorer, found in View > Solution Explorer, right click on the project and select Add > New Azure Function...
 2. In the New Azure Function dialog, select the Blob trigger template.
+[Creating a blob trigger function from a template](media/blob-trigger-template.png)
+
 3. After typing the desired Blob container path, click OK. Save this path name for the next exercise.
 
 ## Create a Blob Container with Azure Storage Explorer
@@ -49,8 +51,9 @@ Function apps host the execution of Functions. We'll use the project that was cr
 The Azure Storage Explorer is a convenient way to access and maintain your storage accounts. The Azure Storage Emulator creates a local storage account that can be used for development and testing without needing to create or deploy a new storage account.
 
 1. On the left hand side of the Storage Explorer, select the Local and Attached > Storage Accounts > (Development) > Blob Containers node.
-2. If the Azure Storage Emulator is not installed, an infobar prompt will appear to do so. Select Download the latest version to install it. [S]
-3. Right Click on Blob Containers and select Create Blob Container. [S]
+2. If the Azure Storage Emulator is not installed, an infobar prompt will appear to install it. Select *Download the latest version* to install the Emulator. [S]
+3. Right Click on Blob Containers and select Create Blob Container. 
+[Creating a blob container in Azure Storage Explorer](media/create-local-container.png)
 4. In the container name prompt, set the name as the desired path from the previous exercise.
 5. Select Add Account to connect to your storage accounts on Azure. [S]
 
@@ -140,5 +143,7 @@ public static string Convert(Stream blob)
 ```
 
 ## Deploy Function App to Azure
+
+## Create Storage Account
 
 ## Next Steps
