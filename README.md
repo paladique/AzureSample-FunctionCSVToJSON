@@ -85,14 +85,12 @@ The local development environment is now ready to work with the function. The Az
 3. Add the following libraries to the file with the following `using` statements:
 
 ```csharp
-using System;
-using System.IO;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Newtonsoft.Json;
+using System.IO;
 using System.Linq;
-using System.Collections.Generic;
-using System.Dynamic;
+using CsvHelper;
 ```
 
 4. Replace the `Run` method with the following
@@ -120,31 +118,17 @@ public static void Run([BlobTrigger("to-convert/{name}", Connection = "")]Stream
 ```csharp
 public static string Convert(Stream blob)
 {
-    string[] strCSV;
+    var sReader = new StreamReader(blob);
+    var csv = new CsvReader(sReader);
 
-    using (StreamReader reader = new StreamReader(blob))
-    {
-        strCSV = reader.ReadToEnd().Split(Environment.NewLine.ToCharArray());
-    }
+    csv.Read();
+    csv.ReadHeader();
 
-    //Assume first row is object properties/csv header
-    var properties = strCSV[0].Split(',');
-    var jsonList = new List<dynamic>();
-    
-    foreach (var item in strCSV.Skip(1))
-    {
-        dynamic expando = new ExpandoObject();
+    var csvRecords = csv.GetRecords<object>().ToList();
 
-        var values = item.Split(',');
-        for (int i = 0; i < properties.Length; i++)
-        {
-            ((IDictionary<string, object>)expando)[properties[i]] = values[i] ?? "";
-        }
-        jsonList.Add(expando);
-    }
-
-    return JsonConvert.SerializeObject(jsonList);
+    return JsonConvert.SerializeObject(csvRecords);
 }
+
 ```
 
 ## Deploy Function App to Azure
@@ -174,6 +158,5 @@ public static string Convert(Stream blob)
 1. Click *Save*.
 
 ## Test Function
-
 
 ## Next Steps

@@ -23,22 +23,20 @@ namespace CSVConverter
             else
             {
                 log.Info("Not a CSV");
-            }
-
-           
+            }           
         }
 
         public static string Convert(Stream blob)
         {
-            var t = new StreamReader(blob);
-            var csv = new CsvReader(t);
+            var sReader = new StreamReader(blob);
+            var csv = new CsvReader(sReader);
 
             csv.Read();
             csv.ReadHeader();
 
-            var file = csv.GetRecords<object>().ToList();
+            var csvRecords = csv.GetRecords<object>().ToList();
            
-            return JsonConvert.SerializeObject(file);
+            return JsonConvert.SerializeObject(csvRecords);
         }
     }
 }
