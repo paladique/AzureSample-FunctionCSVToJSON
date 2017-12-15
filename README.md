@@ -27,14 +27,14 @@ This lab consists of the following exercises:
 With the [Azure Functions and WebJobs Tools Extension for Visual Studio](https://marketplace.visualstudio.com/items?itemName=VisualStudioWebandAzureTools.AzureFunctionsandWebJobsTools), you can quickly get started with a function app in your local development environment.
 
 1. Select File > New > Project to open the new Project dialog.
-2. In the Project dialog select the C# Azure Functions template, which can be found under the Visual C# > Cloud tree node. 
+2. In the Project dialog select the C# Azure Functions template, which can be found under the Visual C# > Cloud tree node.
 
-[Creating a new function app project](media/new-func-proj-vs.png)
+![Creating a new function app project](media/new-func-proj-vs.png)
 
 3. After typing the desired name and path, click OK.
 4. In the template dialog, select the Empty template and click OK. [S]
 
-[Select empty template](media/empty-func-template-vs.png)
+![Select empty template](media/empty-func-template-vs.png)
 
 ## Create a Blob Trigger Function
 
@@ -42,7 +42,8 @@ Function apps host the execution of Functions. We'll use the project that was cr
 
 1. In Solution Explorer, found in View > Solution Explorer, right click on the project and select Add > New Azure Function...
 2. In the New Azure Function dialog, select the Blob trigger template.
-[Creating a blob trigger function from a template](media/blob-trigger-template.png)
+
+![Creating a blob trigger function from a template](media/blob-trigger-template.png)
 
 3. After typing the desired Blob container path, click OK. Save this path name for the next exercise.
 
@@ -52,8 +53,10 @@ The Azure Storage Explorer is a convenient way to access and maintain your stora
 
 1. On the left hand side of the Storage Explorer, select the Local and Attached > Storage Accounts > (Development) > Blob Containers node.
 2. If the Azure Storage Emulator is not installed, an infobar prompt will appear to install it. Select *Download the latest version* to install the Emulator. [S]
-3. Right Click on Blob Containers and select Create Blob Container. 
-[Creating a blob container in Azure Storage Explorer](media/create-local-container.png)
+3. Right Click on Blob Containers and select Create Blob Container.
+
+![Creating a blob container in Azure Storage Explorer](media/create-local-container.png)
+
 4. In the container name prompt, set the name as the desired path from the previous exercise.
 5. Select Add Account to connect to your storage accounts on Azure. [S]
 
@@ -65,12 +68,14 @@ The local development environment is now ready to work with the function. The Az
 
 - `Convert` parses the CSV file into a `dynamic` object collection that uses the first row as its properties, then it is then converted to JSON with JSON.NET
 
-1. From Solution Explorer, open the `local.settings.json` file and confirm that the following setting exists. Add this setting if it is missing. These settings will enable the use of the development storage account with the Storage Emulator.
+1. From Solution Explorer, open the `local.settings.json` file and confirm that the following settings exists. Add this setting if it is missing. These settings will enable the use of the development storage account with the Storage Emulator.
 
 ```javascript
 {
+    "IsEncrypted": false,
     "Values": {
         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "AzureWebJobsDashboard": "UseDevelopmentStorage=true"
     }
 }
 ```
@@ -143,7 +148,32 @@ public static string Convert(Stream blob)
 ```
 
 ## Deploy Function App to Azure
+1. Select Build > Publish ![S]
+1. Select Azure Function App and click *Publish* ![S]
+1. Enter a unique App Name.
+1. Select a subscription
+1. Select existing or create a new resource group with desired name.
+1. Select existing or create a new app service plan with desired name, location, and size.
+1. Click *Create*. ![S]
 
 ## Create Storage Account
+1. Select *Create a Resource*, then search for and select *Storage Account*. ![S]
+2. Enter a unique Name.
+3. Choose an Azure subscription.
+4. Create a new or existing Resource group.
+5. Select a preferred Location.
+1. Copy connection string
+
+![](media/create-storage-acct-form.png)
+
+## Configure Published Function App
+1. Navigate to published function
+1. Navigate to application settings
+1. Click *Add new setting*
+1. Set the name of the setting to the name of the connection, paste the connection string as its value.
+1. Click *Save*.
+
+## Test Function
+
 
 ## Next Steps
