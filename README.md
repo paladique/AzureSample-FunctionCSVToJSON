@@ -66,7 +66,7 @@ The local development environment is now ready to work with the function. The Az
 
 - `Run` starts the execution of the function by logging file metadata, confirming that it's a csv before calling the `Convert` method to parse the file, and finally printing its contents to the console as JSON.
 
-- `Convert` parses the CSV file into a `dynamic` object collection that uses the first row as its properties, then it is then converted to JSON with JSON.NET
+- `Convert` parses the CSV file with the [CSVHelper]() library into a collection, which is then converted to JSON with JSON.NET.
 
 1. From Solution Explorer, open the `local.settings.json` file and confirm that the following settings exists. Add this setting if it is missing. These settings will enable the use of the development storage account with the Storage Emulator.
 
@@ -79,10 +79,20 @@ The local development environment is now ready to work with the function. The Az
     }
 }
 ```
+1. In the same file, add a Connection value with a Connection name of your choice:
+```javascript
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
+        "Connection" : "CSVStorage"
+    }
+}
+```
 
-2. From Solution Explorer, open the `[YourFunctionName].cs` file.
-
-3. Add the following libraries to the file with the following `using` statements:
+1. From Solution Explorer, open the `[YourFunctionName].cs` file.
+1. Add the following libraries to the file with the following `using` statements:
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -130,8 +140,15 @@ public static string Convert(Stream blob)
 }
 
 ```
+## Run and Test Function Locally
+The code for the function is now complete, and can be run and debugged locally in Visual Studio. [How?] The function will run when a file is dropped into the `to-convert` blob container, but will only print a JSON version of a file with a .csv extension. During debugging, a console window will appear, containing information on the App and Functions, and text from `log.Info` method calls.
+
+1. Press F5.
+1. Drag and drop csv file into `to-convert` blob container from exercise 4.
+1. Check the console window, it should look similar to this: ![S]
 
 ## Deploy Function App to Azure
+
 1. Select Build > Publish ![S]
 1. Select Azure Function App and click *Publish* ![S]
 1. Enter a unique App Name.
@@ -141,12 +158,14 @@ public static string Convert(Stream blob)
 1. Click *Create*. ![S]
 
 ## Create Storage Account
+The Function is now published and visible in the Azure portal. In order for it to run as it did locally, it needs a storage account to set the Blob Trigger.
+
 1. Select *Create a Resource*, then search for and select *Storage Account*. ![S]
 2. Enter a unique Name.
 3. Choose an Azure subscription.
 4. Create a new or existing Resource group.
 5. Select a preferred Location.
-1. Copy connection string
+1. Copy connection string.
 
 ![](media/create-storage-acct-form.png)
 
@@ -154,7 +173,7 @@ public static string Convert(Stream blob)
 1. Navigate to published function
 1. Navigate to application settings
 1. Click *Add new setting*
-1. Set the name of the setting to the name of the connection, paste the connection string as its value.
+1. Set the name of the setting to the name of the Connection from exercise [NUMBER], and paste the connection string as its value.
 1. Click *Save*.
 
 ## Test Function
