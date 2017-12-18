@@ -140,8 +140,10 @@ public static string Convert(Stream blob)
 }
 
 ```
+
+
 ## Run and Test Function Locally
-The code for the function is now complete, and can be run and debugged locally in Visual Studio. [How?] The function will run when a file is dropped into the `to-convert` blob container, but will only print a JSON version of a file with a .csv extension. During debugging, a console window will appear, containing information on the App and Functions, and text from `log.Info` method calls.
+The code for the function is now complete, and can be run and debugged locally in Visual Studio. The function will run when a file is dropped into the `to-convert` blob container, but will only print a JSON version of a file with a .csv extension. During debugging, a console window will appear, containing information on the App and Functions, and text from `log.Info` method calls.
 
 1. Press F5.
 1. Drag and drop csv file into `to-convert` blob container from exercise 4.
@@ -149,13 +151,13 @@ The code for the function is now complete, and can be run and debugged locally i
 
 ## Deploy Function App to Azure
 
-1. Select Build > Publish ![S]
-1. Select Azure Function App and click *Publish* ![S]
-1. Enter a unique App Name.
+1. Select Build > Publish ![](media/publish-function-menu-vs.png)
+1. Select Azure Function App and click *Publish* ![](media/publish-func-menu.png)
+1. Enter a unique App Name. ![](media/publish-func-app-service-menu.png)
 1. Select a subscription
 1. Select existing or create a new resource group with desired name.
-1. Select existing or create a new app service plan with desired name, location, and size.
-1. Click *Create*. ![S]
+1. Select existing or create a new app service plan with desired name, location, and size. ![](media/appservice-plan.png)
+1. Click *Create*.
 
 ## Create Storage Account
 The Function is now published and visible in the Azure portal. In order for it to run as it did locally, it needs a storage account to set the Blob Trigger.
