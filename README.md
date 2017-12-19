@@ -106,7 +106,7 @@ using CsvHelper;
 4. Replace the `Run` method with the following
 
 ```csharp
-public static void Run([BlobTrigger("to-convert/{name}", Connection = "")]Stream myBlob, string name, TraceWriter log)
+public static void Run([BlobTrigger("to-convert/{name}", Connection = "AzureWebJobsStorage")]Stream myBlob, string name, TraceWriter log)
 {
     log.Info($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
 
