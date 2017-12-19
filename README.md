@@ -162,19 +162,22 @@ The code for the function is now complete, and can be run and debugged locally i
 ## Create Storage Account
 The Function is now published and visible in the Azure portal. In order for it to run as it did locally, it needs a storage account to set the Blob Trigger.
 
-1. Select *Create a Resource*, then search for and select *Storage Account*. ![S]
+1. Select *Create a Resource*, then search for and select *Storage Account*. ![](media/select-storage-acct.png)
 2. Enter a unique Name.
 3. Choose an Azure subscription.
 4. Create a new or existing Resource group.
 5. Select a preferred Location.
-1. Copy connection string.
-
-![](media/create-storage-acct-form.png)
+1. Check *Pin to Dashboard*.
+1. Click *Create*. ![Creating a new storage account](media/create-storage-acct-form.png)
+1. From the portal dashboard, locate and click on the new storage account to open the *Overview*.
+1. In the menu to the left of the overview, navigate to
+1. , navigate to *Access Keys*.
+1. Copy connection string. ![Copying storage account connection string](media/storage-acct-conn-string.png)
 
 ## Configure Published Function App
-1. Navigate to published function
-1. Navigate to application settings
-1. Click *Add new setting*
+1. Navigate to published function.
+1. Navigate to application settings.
+1. Click *Add new setting.*
 1. Set the name of the setting to the name of the Connection from exercise [NUMBER], and paste the connection string as its value.
 1. Click *Save*.
 
