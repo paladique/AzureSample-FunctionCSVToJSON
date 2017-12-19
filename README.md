@@ -38,7 +38,7 @@ With the [Azure Functions and WebJobs Tools Extension for Visual Studio](https:/
 
 ## Create a Blob Trigger Function
 
-Function apps host the execution of Functions. We'll use the project that was created in the previous exercise to create a Function. The Blob trigger function template executes when a blob has been added to the blob container.
+Function Apps host the execution of Functions. We'll use the project that was created in the previous exercise to create a Function. The Blob trigger function template executes when a blob has been added to the blob container.
 
 1. In Solution Explorer, found in View > Solution Explorer, right click on the project and select Add > New Azure Function...
 2. In the New Azure Function dialog, select the Blob trigger template.
@@ -141,20 +141,19 @@ public static string Convert(Stream blob)
 
 ```
 
-
 ## Run and Test Function Locally
 The code for the function is now complete, and can be run and debugged locally in Visual Studio. The function will run when a file is dropped into the `to-convert` blob container, but will only print a JSON version of a file with a .csv extension. During debugging, a console window will appear, containing information on the App and Functions, and text from `log.Info` method calls.
 
 1. Press F5.
 1. Drag and drop csv file into `to-convert` blob container from exercise 4.
-1. Check the console window, it should look similar to this: ![S]
+1. Check the console window, it should look similar to this: ![Logs of azure function running on local development environment]()
 
 ## Deploy Function App to Azure
 
 1. Select Build > Publish ![](media/publish-function-menu-vs.png)
 1. Select Azure Function App and click *Publish* ![](media/publish-func-menu.png)
 1. Enter a unique App Name. ![](media/publish-func-app-service-menu.png)
-1. Select a subscription
+1. Select a subscription.
 1. Select existing or create a new resource group with desired name.
 1. Select existing or create a new app service plan with desired name, location, and size. ![](media/appservice-plan.png)
 1. Click *Create*.
@@ -170,17 +169,27 @@ The Function is now published and visible in the Azure portal. In order for it t
 1. Check *Pin to Dashboard*.
 1. Click *Create*. ![Creating a new storage account](media/create-storage-acct-form.png)
 1. From the portal dashboard, locate and click on the new storage account to open the *Overview*.
-1. In the menu to the left of the overview, navigate to
-1. , navigate to *Access Keys*.
-1. Copy connection string. ![Copying storage account connection string](media/storage-acct-conn-string.png)
+1. In the menu to the left of the overview, navigate to *Access Keys*.
+1. Copy the connection string. ![Copying storage account connection string](media/storage-acct-conn-string.png)
+1. In the Storage Emulator, refresh the storage explorer by clicking *Refresh All* and locate the new storage account.
+1. In the storage explorer, expand the storage account, and select the *Blob Container* node.
+1. Right click on the *Blob Container* node, and click *Create Blob Container*
+1. Enter container name as `to-convert`.
 
 ## Configure Published Function App
-1. Navigate to published function.
-1. Navigate to application settings.
+
+1. In the portal, navigate to published function. Search for the App name to find it.
+1. In the function, navigate to application settings.
 1. Click *Add new setting.*
 1. Set the name of the setting to the name of the Connection from exercise [NUMBER], and paste the connection string as its value.
 1. Click *Save*.
 
 ## Test Function
+The function is now completely configured and can be tested and monitored in the Azure portal.
+
+1. Drag and drop a CSV file into the new `to-convert` container made in [EXERCISE].
+1. In the portal, navigate to the published Function App.
+2. Expand the Function App, locate the CSV converter Function, and click *Monitor*. ![Monitoring function]()
+3. Wait for log to appear. Use *Refresh* if neccessary.
 
 ## Next Steps
