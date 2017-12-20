@@ -1,6 +1,7 @@
 # Convert CSV Files to JSON with Azure Functions
 
 ## Introduction
+_Note: This lab is still under development_
 
 [TBD]
 
@@ -58,7 +59,10 @@ Function Apps host the execution of Functions. We'll use the project that was cr
 The Azure Storage Explorer is a convenient way to access and maintain your storage accounts. The Azure Storage Emulator creates a local storage account that can be used for development and testing without needing to create or deploy a new storage account.
 
 1. On the left hand side of the Storage Explorer, select the Local and Attached > Storage Accounts > (Development) > Blob Containers node.
-2. If the Azure Storage Emulator is not installed, an infobar prompt will appear to install it. Select *Download the latest version* to install the Emulator. ![S]()
+2. If the Azure Storage Emulator is not installed, an infobar prompt will appear to install it. Select *Download the latest version* to download and install the Emulator.
+
+![Prompt for installing the Azure Storage Emulator](media/install-storage-emulator.png)
+
 3. Right Click on Blob Containers and select Create Blob Container.
 
 ![Creating a blob container in Azure Storage Explorer](media/create-local-container.png)
@@ -73,7 +77,7 @@ The local development environment is now ready to work with the function. The Az
 
 - `Run` starts the execution of the function by logging file metadata, confirming that it's a csv before calling the `Convert` method to parse the file, and finally printing its contents to the console as JSON.
 
-- `Convert` parses the CSV file with the [CSVHelper]() library into a collection, which is then converted to JSON with JSON.NET.
+- `Convert` parses the CSV file with the [CSVHelper](https://joshclose.github.io/CsvHelper/) library into a collection, which is then converted to JSON with [JSON.NET](https://www.newtonsoft.com/json).
 
 1. From Solution Explorer, open the `local.settings.json` file and confirm that the following settings exists. Add this setting if it is missing. These settings will enable the use of the development storage account with the Storage Emulator.
 
@@ -86,6 +90,7 @@ The local development environment is now ready to work with the function. The Az
     }
 }
 ```
+
 1. In the same file, add a Connection value with a Connection name of your choice:
 ```javascript
 {
@@ -155,17 +160,21 @@ The code for the function is now complete, and can be run and debugged locally i
 
 1. Press F5.
 1. Drag and drop csv file into `to-convert` blob container from exercise 4.
-1. Check the console window, it should look similar to this: ![Logs of azure function running on local development environment]()
+
+![Dragging and dropping file into storage explorer](media/drag-file-to-storage-explorer.png)
+
+1. Check the console window, it should look similar to this:
+![Log of azure function running on local development environment](media/function-conosole.png)
 
 <a name="exercise6"></a>
 ## Deploy Function App to Azure
 
-1. Select Build > Publish ![](media/publish-function-menu-vs.png)
-1. Select Azure Function App and click *Publish* ![](media/publish-func-menu.png)
-1. Enter a unique App Name. ![](media/publish-func-app-service-menu.png)
+1. Select Build > Publish ![Opening publish menu in Visual Studio](media/publish-function-menu-vs.png)
+1. Select Azure Function App and click *Publish* ![Publishing a Function App](media/publish-func-menu.png)
+1. Enter a unique App Name. ![Publish settings in app service menu](media/publish-func-app-service-menu.png)
 1. Select a subscription.
 1. Select existing or create a new resource group with desired name.
-1. Select existing or create a new app service plan with desired name, location, and size. ![](media/appservice-plan.png)
+1. Select existing or create a new app service plan with desired name, location, and size. ![App service plan settings](media/appservice-plan.png)
 1. Click *Create*.
 
 <a name="exercise7"></a>
@@ -173,7 +182,7 @@ The code for the function is now complete, and can be run and debugged locally i
 
 The Function is now published and visible in the Azure portal. In order for it to run as it did locally, it needs a storage account to set the Blob Trigger.
 
-1. Select *Create a Resource*, then search for and select *Storage Account*. ![](media/select-storage-acct.png)
+1. Select *Create a Resource*, then search for and select *Storage Account*. ![Selecting storage account in Azure portal](media/select-storage-acct.png)
 2. Enter a unique Name.
 3. Choose an Azure subscription.
 4. Create a new or existing Resource group.
@@ -183,18 +192,18 @@ The Function is now published and visible in the Azure portal. In order for it t
 1. From the portal dashboard, locate and click on the new storage account to open the *Overview*.
 1. In the menu to the left of the overview, navigate to *Access Keys*.
 1. Copy the connection string. ![Copying storage account connection string](media/storage-acct-conn-string.png)
-1. In the Storage Emulator, refresh the storage explorer by clicking *Refresh All* and locate the new storage account.
-1. In the storage explorer, expand the storage account, and select the *Blob Container* node.
-1. Right click on the *Blob Container* node, and click *Create Blob Container*
+1. In the Storage Explorer, click *Refresh All* at the top and locate the new storage account. ![Refreshing storage explorer](media/refresh-storage-explorer.png)
+1. Expand the storage account, and select the *Blob Container* node.
+1. Right click on the *Blob Container* node, and click *Create Blob Container* ![Creating a blob container](media/storage-acct-in-explorer.png)
 1. Enter container name as `to-convert`.
 
 <a name="exercise8"></a>
 ## Configure Published Function App
 
-1. In the portal, navigate to published function. Search for the App name to find it.
-1. In the function, navigate to application settings.
-1. Click *Add new setting.*
-1. Set the name of the setting to the name of the Connection from exercise [NUMBER], and paste the connection string as its value.
+1. In the portal, navigate to published function. Search for the App name to find it. ![Searching for published function]()
+1. In the function, navigate to application settings. ![Function application settings]()
+1. Click *Add new setting*.
+1. Set the name of the setting to the name of the Connection from Exercise 4, and paste the connection string as its value.
 1. Click *Save*.
 
 <a name="exercise9"></a>
@@ -202,9 +211,9 @@ The Function is now published and visible in the Azure portal. In order for it t
 
 The function is now completely configured and can be tested and monitored in the Azure portal.
 
-1. Drag and drop a CSV file into the new `to-convert` container made in [EXERCISE].
+1. Drag and drop a CSV file into the new `to-convert` container made in Exercise 7.
 1. In the portal, navigate to the published Function App.
-2. Expand the Function App, locate the CSV converter Function, and click *Monitor*. ![Monitoring function]()
-3. Wait for log to appear. Use *Refresh* if neccessary.
+2. Expand the Function App, locate the CSV converter Function, and click *Monitor*. ![Monitoring function in Azure portal]()
+3. Wait for log to appear. Use *Refresh* if necessary.
 
 ## Next Steps
