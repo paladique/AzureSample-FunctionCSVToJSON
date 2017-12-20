@@ -17,12 +17,16 @@ This lab consists of the following exercises:
 
 1. [Create an Azure Function App](#Exercise1)
 2. [Create a Blob Trigger Function](#Exercise2)
-3. [Connect to Azure Storage Explorer](#Exercise3)
-4. [Create Blob Container](#Exercise4)
-5. [Test Function](#Exercise5)
+3. [Create a Blob Container with Azure Storage Explorer](#Exercise3)
+4. [Build Function](#Exercise4)
+5. [Run and Test Function Locally](#Exercise5)
 6. [Deploy Function App to Azure](#Exercise6)
+7. [Create Storage Account](#Exercise7)
+8. [Configure Published Function App](#Exercise8)
+9. [Run and Monitor Function](#Exercise9)
 
-## Create an Azure Function App in Visual Studio
+<a name="exercise1"></a>
+## Create an Azure Function App in Visual Studio 
 
 With the [Azure Functions and WebJobs Tools Extension for Visual Studio](https://marketplace.visualstudio.com/items?itemName=VisualStudioWebandAzureTools.AzureFunctionsandWebJobsTools), you can quickly get started with a function app in your local development environment.
 
@@ -36,6 +40,7 @@ With the [Azure Functions and WebJobs Tools Extension for Visual Studio](https:/
 
 ![Select empty template](media/empty-func-template-vs.png)
 
+<a name="exercise2"></a>
 ## Create a Blob Trigger Function
 
 Function Apps host the execution of Functions. We'll use the project that was created in the previous exercise to create a Function. The Blob trigger function template executes when a blob has been added to the blob container.
@@ -47,19 +52,21 @@ Function Apps host the execution of Functions. We'll use the project that was cr
 
 3. After typing the desired Blob container path, click OK. Save this path name for the next exercise.
 
+<a name="exercise3"></a>
 ## Create a Blob Container with Azure Storage Explorer
 
 The Azure Storage Explorer is a convenient way to access and maintain your storage accounts. The Azure Storage Emulator creates a local storage account that can be used for development and testing without needing to create or deploy a new storage account.
 
 1. On the left hand side of the Storage Explorer, select the Local and Attached > Storage Accounts > (Development) > Blob Containers node.
-2. If the Azure Storage Emulator is not installed, an infobar prompt will appear to install it. Select *Download the latest version* to install the Emulator. [S]
+2. If the Azure Storage Emulator is not installed, an infobar prompt will appear to install it. Select *Download the latest version* to install the Emulator. ![S]()
 3. Right Click on Blob Containers and select Create Blob Container.
 
 ![Creating a blob container in Azure Storage Explorer](media/create-local-container.png)
 
 4. In the container name prompt, set the name as the desired path from the previous exercise.
-5. Select Add Account to connect to your storage accounts on Azure. [S]
+5. Select Add Account to connect to your storage accounts on Azure. ![]()
 
+<a name="exercise4"></a>
 ## Build Function
 
 The local development environment is now ready to work with the function. The Azure Functions Extension allows local execution and debugging of Functions in Visual Studio. The provided code has two methods: `Run` and `Convert`.
@@ -141,13 +148,16 @@ public static string Convert(Stream blob)
 
 ```
 
+<a name="exercise5"></a>
 ## Run and Test Function Locally
+
 The code for the function is now complete, and can be run and debugged locally in Visual Studio. The function will run when a file is dropped into the `to-convert` blob container, but will only print a JSON version of a file with a .csv extension. During debugging, a console window will appear, containing information on the App and Functions, and text from `log.Info` method calls.
 
 1. Press F5.
 1. Drag and drop csv file into `to-convert` blob container from exercise 4.
 1. Check the console window, it should look similar to this: ![Logs of azure function running on local development environment]()
 
+<a name="exercise6"></a>
 ## Deploy Function App to Azure
 
 1. Select Build > Publish ![](media/publish-function-menu-vs.png)
@@ -158,7 +168,9 @@ The code for the function is now complete, and can be run and debugged locally i
 1. Select existing or create a new app service plan with desired name, location, and size. ![](media/appservice-plan.png)
 1. Click *Create*.
 
+<a name="exercise7"></a>
 ## Create Storage Account
+
 The Function is now published and visible in the Azure portal. In order for it to run as it did locally, it needs a storage account to set the Blob Trigger.
 
 1. Select *Create a Resource*, then search for and select *Storage Account*. ![](media/select-storage-acct.png)
@@ -176,6 +188,7 @@ The Function is now published and visible in the Azure portal. In order for it t
 1. Right click on the *Blob Container* node, and click *Create Blob Container*
 1. Enter container name as `to-convert`.
 
+<a name="exercise8"></a>
 ## Configure Published Function App
 
 1. In the portal, navigate to published function. Search for the App name to find it.
@@ -184,7 +197,9 @@ The Function is now published and visible in the Azure portal. In order for it t
 1. Set the name of the setting to the name of the Connection from exercise [NUMBER], and paste the connection string as its value.
 1. Click *Save*.
 
-## Test Function
+<a name="exercise9"></a>
+## Run and Monitor Function
+
 The function is now completely configured and can be tested and monitored in the Azure portal.
 
 1. Drag and drop a CSV file into the new `to-convert` container made in [EXERCISE].
