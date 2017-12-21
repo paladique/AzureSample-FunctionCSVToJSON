@@ -220,7 +220,8 @@ The function is now completely configured and can be tested and monitored in the
 
 1. Drag and drop a CSV file into the new `to-convert` container made in Exercise 7.
 1. In the portal, navigate to the published Function App.
-1. Expand the Function App, locate the CSV converter Function, and click *Monitor*. ![Monitoring function in Azure portal]()
+1. Expand the Function App, locate the CSV converter Function, and click *Monitor*. 
+![Monitoring function in Azure portal](mesoa/monitor-function.png)
 1. Wait for log to appear. Use *Refresh* if necessary.
 
 ## Next Steps
