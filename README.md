@@ -188,23 +188,30 @@ The Function is now published and visible in the Azure portal. In order for it t
 4. Create a new or existing Resource group.
 5. Select a preferred Location.
 1. Check *Pin to Dashboard*.
-1. Click *Create*. ![Creating a new storage account](media/create-storage-acct-form.png)
+1. Click *Create*. 
+![Creating a new storage account](media/create-storage-acct-form.png)
 1. From the portal dashboard, locate and click on the new storage account to open the *Overview*.
 1. In the menu to the left of the overview, navigate to *Access Keys*.
-1. Copy the connection string. ![Copying storage account connection string](media/storage-acct-conn-string.png)
-1. In the Storage Explorer, click *Refresh All* at the top and locate the new storage account. ![Refreshing storage explorer](media/refresh-storage-explorer.png)
+1. Copy the connection string. 
+![Copying storage account connection string](media/storage-acct-conn-string.png)
+1. In the Storage Explorer, click *Refresh All* at the top and locate the new storage account. 
+![Refreshing storage explorer](media/refresh-storage-explorer.png)
 1. Expand the storage account, and select the *Blob Container* node.
-1. Right click on the *Blob Container* node, and click *Create Blob Container* ![Creating a blob container](media/storage-acct-in-explorer.png)
+1. Right click on the *Blob Container* node, and click *Create Blob Container* 
+![Creating a blob container](media/storage-acct-in-explorer.png)
 1. Enter container name as `to-convert`.
 
 <a name="exercise8"></a>
 ## Configure Published Function App
 
-1. In the portal, navigate to published function. Search for the App name to find it. ![Searching for published function]()
-1. In the function, navigate to application settings. ![Function application settings]()
-1. Click *Add new setting*.
+1. In the portal, navigate to published function. Search for the App name to find it. 
+![Searching for published function](media/portal-search.png)
+1. From the function app overview, navigate to application settings. 
+![Function application settings](media/app-settings.png)
+1. At the end of the *Application Settings* section, click *Add new setting*. 
+![Adding new application setting](media/add-application-setting.png)
 1. Set the name of the setting to the name of the Connection from Exercise 4, and paste the connection string as its value.
-1. Click *Save*.
+1. At the top of the applications settings tab, click *Save*.
 
 <a name="exercise9"></a>
 ## Run and Monitor Function
@@ -213,7 +220,7 @@ The function is now completely configured and can be tested and monitored in the
 
 1. Drag and drop a CSV file into the new `to-convert` container made in Exercise 7.
 1. In the portal, navigate to the published Function App.
-2. Expand the Function App, locate the CSV converter Function, and click *Monitor*. ![Monitoring function in Azure portal]()
-3. Wait for log to appear. Use *Refresh* if necessary.
+1. Expand the Function App, locate the CSV converter Function, and click *Monitor*. ![Monitoring function in Azure portal]()
+1. Wait for log to appear. Use *Refresh* if necessary.
 
 ## Next Steps
