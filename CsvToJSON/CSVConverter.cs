@@ -1,12 +1,12 @@
-using System;
+using Azure.Storage.Blobs;
+using CsvHelper;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using CsvHelper;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
+using System.Text;
 
 namespace CsvToJSON
 {
@@ -20,11 +20,12 @@ namespace CsvToJSON
             //Only convert CSV files
             if (name.Contains(".csv"))
             {
+                
                 var json = Convert(myBlob);
 
-                createFile(json);
+                CreateFile(json, name.Replace(".csv", ""));
 
-                log.LogInformation(json);
+                //log.LogInformation(json);
             }
             else
             {
@@ -34,10 +35,8 @@ namespace CsvToJSON
 
         public static string Convert(Stream blob)
         {
-            var sReader = new StreamReader(blob);
-
-            var csv = new CsvReader(sReader, CultureInfo.InvariantCulture);
-
+            var csv = new CsvReader(new StreamReader(blob), CultureInfo.InvariantCulture);
+            csv.Configuration.BadDataFound = null;
             csv.Read();
             csv.ReadHeader();
 
@@ -46,9 +45,15 @@ namespace CsvToJSON
             return JsonConvert.SerializeObject(csvRecords);
         }
 
-        private static void createFile(string json)
+        public static void CreateFile(string json, string fileName)
         {
-            throw new NotImplementedException();
+            var c = new BlobContainerClient(System.Environment.GetEnvironmentVariable("ConnectionStrings:StorageConnString"), "to-convert");
+            byte[] writeArr = Encoding.UTF8.GetBytes(json);
+
+            using (MemoryStream stream = new MemoryStream(writeArr))
+            {
+                c.UploadBlob($"{fileName}.json", stream);
+            }
         }
 
     }
