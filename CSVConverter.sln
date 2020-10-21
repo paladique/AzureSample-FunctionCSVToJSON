@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2003
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSVConverter", "CSVConverter\CSVConverter.csproj", "{ABF1E08D-11B2-4867-B9E9-9DD5A4811999}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsvToJSON", "CsvToJSON\CsvToJSON.csproj", "{EE679583-0541-449B-BC3D-3684DB88CAF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ABF1E08D-11B2-4867-B9E9-9DD5A4811999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABF1E08D-11B2-4867-B9E9-9DD5A4811999}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABF1E08D-11B2-4867-B9E9-9DD5A4811999}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABF1E08D-11B2-4867-B9E9-9DD5A4811999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE679583-0541-449B-BC3D-3684DB88CAF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE679583-0541-449B-BC3D-3684DB88CAF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE679583-0541-449B-BC3D-3684DB88CAF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE679583-0541-449B-BC3D-3684DB88CAF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
