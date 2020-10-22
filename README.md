@@ -24,7 +24,7 @@
 10. Paste connection string into the value of `StorageConnString` in [the settings file](CsvToJSON/_local.settings.json)
 11. Rename the file to remove the underscore: `local.settings.json`
 12. Run code in:
-   1. Visual Studio > F5
-   2. VS Code > Run > Attach to .NET Functions > Start Debugging Button
-   3. Command line > `cd CSVToJSON` > `func start`
+    - Visual Studio > F5
+    - VS Code > Run > Attach to .NET Functions > Start Debugging Button
+    - Command line > `cd CSVToJSON` > `func start`
 13. Want to deploy to [Azure](https://azure.microsoft.com/en-us/free/?WT.mc_id=ca-github-jasmineg)? Refer to this [documentation on deployment options](https://docs.microsoft.com/en-us/azure/azure-functions/functions-deployment-technologies?WT.mc_id=ca-github-jasmineg#deployment-methods)
