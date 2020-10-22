@@ -20,12 +20,15 @@ namespace CsvToJSON
             //Only convert CSV files
             if (name.Contains(".csv"))
             {
-                
+                log.LogInformation("Converting to JSON");
                 var json = Convert(myBlob);
 
-                CreateFile(json, name.Replace(".csv", ""));
+                var fileName = name.Replace(".csv", "");
+                log.LogInformation($"Creating {fileName}.json");
+                CreateJSONBlob(json, fileName);
 
-                //log.LogInformation(json);
+                //Uncomment this to see JSON in the console
+                //log.LogInformation(json); 
             }
             else
             {
@@ -36,16 +39,17 @@ namespace CsvToJSON
         public static string Convert(Stream blob)
         {
             var csv = new CsvReader(new StreamReader(blob), CultureInfo.InvariantCulture);
-            csv.Configuration.BadDataFound = null;
+            csv.Configuration.BadDataFound = null; //null skips over bad data, a function can handle bad data as well
+ 
             csv.Read();
             csv.ReadHeader();
-
             var csvRecords = csv.GetRecords<object>().ToList();
 
+            //Convert to JSON
             return JsonConvert.SerializeObject(csvRecords);
         }
 
-        public static void CreateFile(string json, string fileName)
+        public static void CreateJSONBlob(string json, string fileName)
         {
             var c = new BlobContainerClient(System.Environment.GetEnvironmentVariable("ConnectionStrings:StorageConnString"), "to-convert");
             byte[] writeArr = Encoding.UTF8.GetBytes(json);
