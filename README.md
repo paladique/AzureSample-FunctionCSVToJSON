@@ -1,14 +1,14 @@
 # Convert CSV Files to JSON with Azure Functions
 
-[Blob trigger function](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob-trigger) that converts a CSV File to JSON file.
+[Blob trigger function](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger?WT.mc_id=academic-0000-jasmineg) that converts a CSV File to JSON file.
 
 ## Built with
 
 - Visual Studio 2019 (with Azure development workload)
-- VS Code and [Azure Functions Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
-- [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/?WT.mc_id=ca-github-jasmineg)
+- VS Code and [Azure Functions Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions&WT.mc_id=academic-0000-jasmineg)
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/?WT.mc_id=academic-0000-jasmineg)
 - [Azurite](https://github.com/azure/azurite)
-- [Azure Functions Core Tools v3.0](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?WT.mc_id=ca-github-jasmineg&tabs=windows%2Ccsharp%2Cbash#install-the-azure-functions-core-tools)
+- [Azure Functions Core Tools v3.0](https://docs.microsoft.com/azure/azure-functions/functions-run-local?WT.mc_id=academic-0000-jasmineg&tabs=windows,csharp,bash#install-the-azure-functions-core-tools)
 
 ## Running this sample locally
 
@@ -27,4 +27,4 @@
     - Visual Studio > F5
     - VS Code > Run > Attach to .NET Functions > Start Debugging Button
     - Command line > `cd CSVToJSON` > `func start`
-13. Want to deploy to [Azure](https://azure.microsoft.com/en-us/free/?WT.mc_id=ca-github-jasmineg)? Refer to this [documentation on deployment options](https://docs.microsoft.com/en-us/azure/azure-functions/functions-deployment-technologies?WT.mc_id=ca-github-jasmineg#deployment-methods)
+13. Want to deploy to [Azure](https://azure.microsoft.com/free/?WT.mc_id=academic-0000-jasmineg)? Refer to this [documentation on deployment options](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies?WT.mc_id=academic-0000-jasmineg#deployment-methods)
